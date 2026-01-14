@@ -10,9 +10,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-class ExpenseViewModel(private val repository: ExpenseRepository): ViewModel(){
-//     private val _expenses = MutableStateFlow<List<ExpenseEntity>>(emptyList())
-    val expenses : StateFlow<List<ExpenseEntity>> =
+class ExpenseViewModel(private val repository: ExpenseRepository) : ViewModel() {
+    //     private val _expenses = MutableStateFlow<List<ExpenseEntity>>(emptyList())
+    val expenses: StateFlow<List<ExpenseEntity>> =
         repository.getExpenses()
             .stateIn(
                 scope = viewModelScope,
