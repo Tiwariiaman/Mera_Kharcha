@@ -25,7 +25,7 @@ fun ExpenseScreen (
             onBack = TODO()
         )
             expenses.forEach {
-            Text("₹${it.amount} - ${it.category}")
+            Text("₹${it.amount} - ${it.category} - ${it.note}")
         }
     }
 }

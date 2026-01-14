@@ -58,6 +58,7 @@ dependencies {
         implementation(libs.androidx.room.runtime)
         implementation(libs.androidx.room.ktx)
     ksp(libs.androidx.room.compiler)
+    implementation("com.github.tehras:charts:0.2.4-alpha")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

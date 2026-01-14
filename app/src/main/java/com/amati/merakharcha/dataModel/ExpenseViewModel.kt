@@ -2,6 +2,7 @@ package com.amati.merakharcha.dataModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.amati.merakharcha.data.CategoryTotal
 import com.amati.merakharcha.data.ExpenseEntity
 import com.amati.merakharcha.data.ExpenseRepository
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,6 +21,13 @@ class ExpenseViewModel(private val repository: ExpenseRepository) : ViewModel() 
                 initialValue = emptyList(),
             )
 
+    val categorySummary: StateFlow<List<CategoryTotal>> =
+        repository.getCategorySummary()
+            .stateIn(
+                viewModelScope,
+                SharingStarted.WhileSubscribed(5000),
+                emptyList()
+            )
     fun addExpense(expense: ExpenseEntity) {
         viewModelScope.launch {
             repository.addExpense(expense)

@@ -15,4 +15,14 @@ interface ExpenseDao {
     @Query("SELECT * FROM expenses ORDER BY date DESC")
      fun getAllExpenses(): Flow<List<ExpenseEntity>>
 
+    @Query(""" 
+        SELECT category, SUM(amount) as total 
+        FROM expenses GROUP BY category""")
+
+    fun getCategorySummary(): Flow<List<CategoryTotal>>
 }
+
+data class CategoryTotal(
+    val category: String,
+    val total: Double
+)

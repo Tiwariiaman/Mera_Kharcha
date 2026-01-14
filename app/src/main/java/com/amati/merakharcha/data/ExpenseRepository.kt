@@ -12,4 +12,9 @@ class ExpenseRepository (
      fun getExpenses(): Flow<List<ExpenseEntity>> {
         return dao.getAllExpenses()
     }
+
+    fun getCategorySummary(): Flow<List<CategoryTotal>> {
+        return dao.getCategorySummary()
+    }
+
 }
