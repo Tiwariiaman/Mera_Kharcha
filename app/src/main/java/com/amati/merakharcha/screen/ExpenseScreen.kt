@@ -18,9 +18,12 @@ fun ExpenseScreen (
 //            Text("₹${it.amount} - ${it.category}")
 //        }
 
-        AddExpenseScreen(onSave = {expense ->
-            viewModel.addExpense(expense)
-        })
+        AddExpenseScreen(
+            onSave = { expense ->
+                viewModel.addExpense(expense)
+            },
+            onBack = TODO()
+        )
             expenses.forEach {
             Text("₹${it.amount} - ${it.category}")
         }

@@ -11,19 +11,30 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavGraph
+import com.amati.merakharcha.data.ExpenseDatabase
+import com.amati.merakharcha.data.ExpenseRepository
 import com.amati.merakharcha.dataModel.ExpenseViewModel
+import com.amati.merakharcha.dataModel.ExpenseViewModelFactory
 import com.amati.merakharcha.screen.ExpenseScreen
 import com.amati.merakharcha.ui.theme.MeraKharchaTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
 
-        val viewModel = ExpenseViewModel()
 
+
+        val database = ExpenseDatabase.getDatabase(this)
+        val repository = ExpenseRepository(database.expenseDao())
+        val factory = ExpenseViewModelFactory(repository)
+        val viewModel = ViewModelProvider(this, factory)
+            .get(ExpenseViewModel::class.java)
         setContent {
-            ExpenseScreen(viewModel = viewModel)
+            AppNavGraph(viewModel)
+
         }
     }
 }
