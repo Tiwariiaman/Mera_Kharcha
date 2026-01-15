@@ -56,3 +56,17 @@ fun MeraKharchaTheme(
         content = content
     )
 }
+
+@Composable
+fun MeraKarchaTheme1(
+    darkTheme: Boolean = isSystemInDarkTheme(),
+    content: @Composable () -> Unit
+){
+    val colorScheme = if(darkTheme) darkColorScheme() else lightColorScheme()
+
+    MaterialTheme(
+        colorScheme = colorScheme,
+        typography = Typography,
+        content = content
+    )
+}

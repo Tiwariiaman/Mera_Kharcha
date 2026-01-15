@@ -1,3 +1,5 @@
+import org.gradle.kotlin.dsl.implementation
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -57,8 +59,13 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
         implementation(libs.androidx.room.runtime)
         implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.compose.runtime.saveable)
     ksp(libs.androidx.room.compiler)
-    implementation("com.github.tehras:charts:0.2.4-alpha")
+    implementation(libs.charts)
+    implementation(libs.androidx.material3)
+    implementation(libs.androidx.compose.material.icons.extended)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.lifecycle.runtime.compose)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

@@ -37,11 +37,11 @@ fun AppNavGraph(viewModel: ExpenseViewModel){
         }
 
         composable("summary") {
-            CategorySummaryScreen(viewModel)
+            CategorySummaryScreen(viewModel, onBack = {navController.popBackStack()})
         }
 
         composable("charts") {
-            ExpenseChartScreen(viewModel)
+            ExpenseChartScreen(viewModel, onBack = {navController.popBackStack()})
         }
     }
 }
